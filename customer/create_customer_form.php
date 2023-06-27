@@ -14,6 +14,7 @@
 
 <body>
     <div class="container">
+        <h1 class="mt-5 text-center">고객등록화면</h1>
         <form id="create_customer_form" action="create_customer_process.php" method="post" enctype="multipart/form-data"
             class="mt-5">
             <div class="form-group row mb-3 align-items-center mb-3">
@@ -228,23 +229,23 @@
                 <label for="activity_scope" class="col-sm-3 col-form-label">*인증범위 활동:</label>
                 <div class="col-sm-9 d-flex gap-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="activity_scope" id="design_development"
-                            value="design_development">
+                        <input class="form-check-input" type="checkbox" name="activity_scope[]" id="design_development"
+                            value="설계/개발">
                         <label class="form-check-label" for="design_development">설계/개발</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="activity_scope"
-                            id="manufacture_production" value="manufacture_production">
+                        <input class="form-check-input" type="checkbox" name="activity_scope[]"
+                            id="manufacture_production" value="제조/생산">
                         <label class="form-check-label" for="manufacture_production">제조/생산</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="activity_scope"
-                            id="installation_construction" value="installation_construction">
+                        <input class="form-check-input" type="checkbox" name="activity_scope[]"
+                            id="installation_construction" value="설치/시공">
                         <label class="form-check-label" for="installation_construction">설치/시공</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="activity_scope" id="sales_service"
-                            value="sales_service">
+                        <input class="form-check-input" type="checkbox" name="activity_scope[]" id="sales_service"
+                            value="판매/서비스">
                         <label class="form-check-label" for="sales_service">판매/서비스</label>
                     </div>
                 </div>

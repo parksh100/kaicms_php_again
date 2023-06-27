@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 주소 입력여부 확인
     const address_ko = document.querySelector('#address_ko');
     if (!address_ko.value) {
-      alert('주소를 입력해주세요.');
+      alert('국문주소를 입력해주세요.');
       address_ko.focus();
       return false;
     }
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function () {
       '#korean_certification_scope'
     );
     if (!korean_certification_scope.value) {
-      alert('한국어 인증범위를 입력해주세요.');
+      alert('국문 인증범위를 입력해주세요.');
       korean_certification_scope.focus();
       return false;
     }
@@ -273,24 +273,25 @@ document.addEventListener('DOMContentLoaded', function () {
       '#en_certification_scope'
     );
     if (!en_certification_scope.value) {
-      alert('영어 인증범위를 입력해주세요.');
+      alert('영문 인증범위를 입력해주세요.');
       en_certification_scope.focus();
       return false;
     }
-    // name=activity_scope인 체크박스 선택여부 확인
-    const activity_scope = document.querySelectorAll(
-      'input[name="activity_scope"]:checked'
-    );
-    if (activity_scope.length === 0) {
-      alert('활동범위를 선택해주세요.');
-      return false;
-    }
+    // name=activity_scope[]인 체크박스 선택여부 확인
+    // const activity_scope = document.querySelectorAll(
+    //   'input[name="activity_scope[]"]:checked'
+    // );
+    // if (activity_scope.length === 0) {
+    //   alert('활동범위를 선택해주세요.');
+    //   return false;
+    // }
+
     // name=iaf_code[]인 체크박스 선택여부 확인
     const iaf_code = document.querySelectorAll(
       'input[name="iaf_code[]"]:checked'
     );
     if (iaf_code.length === 0) {
-      alert('인증범위를 선택해주세요.');
+      alert('IAF CODE를 선택해주세요.');
       return false;
     }
     // product_service_name 입력여부 확인
