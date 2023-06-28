@@ -13,6 +13,8 @@
     ];
     $pdo = new PDO($dsn, $user, $pass, $opt);
 
+    
+
     // gather all input data
     $customer_type = $_POST['customer_type'];
     $business_name_ko = $_POST['business_name_ko'];
@@ -60,7 +62,7 @@
 
      // gather all file data
      $business_cert_image = $_FILES['business_cert_image'];
-     $target_dir = "uploads/";
+     $target_dir = "../uploads/";
      $upload_time = date('YmdHis');
      $original_file_name = basename($business_cert_image['name']);
      $new_file_name = $upload_time . $original_file_name;
@@ -78,46 +80,7 @@
     // prepare SQL statement and bind parameters
     $stmt = $pdo->prepare("INSERT INTO customer (customer_type, name_ko, name_en, biz_no, ceo_name, ceo_mobile, email, phone, fax, postcode, addr_ko, addr_ko_detail, addr_en, addr_en_detail, manager, manager_mobile, manager_email, homepage, organize_scope, employee_number, dev, dev_employee, scope_ko, scope_en, activity, iaf_code, process, exclusion, exclusion_content, outsourcing, outsourcing_content, construction, construction_content, biz_license, biz_license_original) VALUES (:customer_type, :name_ko, :name_en, :biz_no, :ceo_name, :ceo_mobile, :email, :phone, :fax, :postcode, :addr_ko, :addr_ko_detail, :addr_en, :addr_en_detail, :manager, :manager_mobile, :manager_email, :homepage, :organize_scope, :employee_number, :dev, :dev_employee, :scope_ko, :scope_en, :activity, :iaf_code, :process, :exclusion, :exclusion_content, :outsourcing, :outsourcing_content, :construction, :construction_content, :biz_license, :biz_license_original)");
     
-    // Execute the query with the bound parameters
-    $stmt->execute([
-        'customer_type' => $customer_type,
-        'name_ko' => $business_name_ko,
-        'name_en' => $business_name_en,
-        'biz_no' => $business_registration_number,
-        'ceo_name' => $representative_name,
-        'ceo_mobile' => $representative_phone_number,
-        'email' => $representative_email,
-        'phone' => $representative_phone,
-        'fax' => $representative_fax_number,
-        'postcode' => $postcode,
-        'addr_ko' => $address_ko,
-        'addr_ko_detail' => $address_detail_ko,
-        'addr_en' => $address_en,
-        'addr_en_detail' => $address_detail_en,
-        'manager' => $manager_name,
-        'manager_mobile' => $manager_phone_number,
-        'manager_email' => $manager_email,
-        'homepage' => $homepage,
-        'organize_scope' => $scope_of_organization,
-        'employee_number' => $number_of_employees,
-        'dev' => $design_dev,
-        'dev_employee' => $number_of_designers,
-        'scope_ko' => $korean_certification_scope,
-        'scope_en' => $en_certification_scope,
-        'activity' => $activity_scope_str,
-        'iaf_code' => $iaf_code_str,
-        'process' => $product_service_name,
-        'exclusion' => $exclusion,
-        'exclusion_content' => $exclusion_basis,
-        'outsourcing' => $outsourcing,
-        'outsourcing_content' => $outsourcing_process,
-        'construction' => $construction_permit,
-        'construction_content' => $construction_license_content,
-        'biz_license' => $biz_license,
-        'biz_license_original' => $biz_license_original,
-        // 'biz_license_ext' => $business_cert_image_type
-        
-    ]);
+    
     try {
         // Execute the query with the bound parameters
         $executed = $stmt->execute([
@@ -154,18 +117,19 @@
             'outsourcing_content' => $outsourcing_process,
             'construction' => $construction_permit,
             'construction_content' => $construction_license_content,
-            'biz_license' => $new_filename,
-            'biz_license_original' => $business_cert_image_name,
-            'biz_license_ext' => $business_cert_image_type
+            'biz_license' => $biz_license,
+            'biz_license_original' => $biz_license_original,
+            // 'biz_license_ext' => $business_cert_image_type
         ]);
     
         if($executed) {
-            echo "<script>alert('고객정보가 성공적으로 등록되었습니다!'); window.location.href='/list_customer.php';</script>";
-        } else {
-            echo "<script>alert('고객등록과정에서 문제가 발생했습니다. 다시 시도해주세요'); window.location.href='/create_customer_form.php';</script>";
+            // Redirection to another page
+            header('Location: http://localhost:8888/kaicms_php/customer/list_customer.php');
+            exit();} else {
+            echo "<script>alert('고객등록과정에서 문제가 발생했습니다. 다시 시도해주세요'); window.location.href='http://localhost:8888/kaicms_php/customer/create_customer_form.php';</script>";
         }
     } catch (PDOException $e) {
-        echo "<script>alert('Error: ".$e->getMessage()."'); window.location.href='/create_customer_form.php';</script>";
+        echo "<script>alert('Error: ".$e->getMessage()."'); window.location.href='http://localhost:8888/kaicms_php/customer/create_customer_form.php';</script>";
     }
     
 

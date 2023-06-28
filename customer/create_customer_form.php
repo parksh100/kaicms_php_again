@@ -78,14 +78,14 @@
                 <label for="representative_phone_number" class="col-sm-3 col-form-label">대표자 휴대번호:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="representative_phone_number"
-                        name="representative_phone_number" required>
+                        name="representative_phone_number" placeholder="번호만 입력" required>
                 </div>
             </div>
             <!--회사대표 이메일 -->
             <div class="form-group row mb-3">
                 <label for="representative_email" class="col-sm-3 col-form-label">*대표 이메일:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="representative_email" name="representative_email"
+                    <input type="email" class="form-control" id="representative_email" name="representative_email"
                         required>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 <label for="representative_phone" class="col-sm-3 col-form-label">*대표전화번호:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="representative_phone" name="representative_phone"
-                        required>
+                        placeholder="번호만 입력" required>
                 </div>
             </div>
             <!-- 대표팩스번호 -->
@@ -102,7 +102,7 @@
                 <label for="representative_fax_number" class="col-sm-3 col-form-label">대표팩스번호:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="representative_fax_number"
-                        name="representative_fax_number">
+                        name="representative_fax_number" placeholder="번호만 입력">
                 </div>
             </div>
             <!-- 우편번호 -->
@@ -154,14 +154,15 @@
             <div class="form-group row mb-3">
                 <label for="manager_phone_number" class="col-sm-3 col-form-label">*담당자 휴대번호:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="manager_phone_number" name="manager_phone_number">
+                    <input type="text" class="form-control" id="manager_phone_number" name="manager_phone_number"
+                        placeholder="번호만 입력" required>
                 </div>
             </div>
             <!-- 담당자 이메일 -->
             <div class="form-group row mb-3">
                 <label for="manager_email" class="col-sm-3 col-form-label">*담당자 이메일:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="manager_email" name="manager_email">
+                    <input type="email" class="form-control" id="manager_email" name="manager_email">
                 </div>
             </div>
             <!-- 홈페이지 -->
@@ -191,11 +192,11 @@
                 <div class="col-sm-9">
                     <div class="d-flex gap-3 my-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="design_dev" id="yes" value="yes">
+                            <input class="form-check-input" type="radio" name="design_dev" id="yes" value="있음">
                             <label class="form-check-label" for="yes">있음</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="design_dev" id="no" value="no">
+                            <input class="form-check-input" type="radio" name="design_dev" id="no" value="없음">
                             <label class="form-check-label" for="no">없음</label>
                         </div>
                     </div>
@@ -327,7 +328,7 @@
 
             <!-- 건설면허보유 여부 -->
             <div class="form-group row mb-3">
-                <label for="construction_license_status" class="col-sm-3 col-form-label">건설면허보유 여부:</label>
+                <label for="construction_license_status" class="col-sm-3 col-form-label">*건설면허보유 여부:</label>
                 <div class="col-sm-9 d-flex gap-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="construction_license_status_yes"
@@ -343,7 +344,7 @@
             </div>
             <!-- 건설면허 내용 -->
             <div class="form-group row mb-3" id="construction_permit_group">
-                <label for="construction_license_content" class="col-sm-3 col-form-label">*건설면허 내용:</label>
+                <label for="construction_license_content" class="col-sm-3 col-form-label">건설면허 내용:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="construction_license_content"
                         name="construction_license_content">
@@ -358,7 +359,7 @@
                 <div class="col-sm-9">
                     <input type="file" class="form-control" id="business_cert_image" name="business_cert_image"
                         accept="image/*,.pdf">
-                    <small class="form-text text-muted">😀 파일 형식은 이미지 또는 PDF만 가능합니다.</small>
+                    <small class="form-text text-muted">😀 파일 형식은 image 또는 PDF만 가능합니다.</small>
                 </div>
             </div>
 
