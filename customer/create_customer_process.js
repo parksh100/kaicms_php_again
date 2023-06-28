@@ -171,6 +171,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
       checkBusinessRegNumber(business_no);
     });
+
+  // 사업자등록번호에 '-' 추가
+  const biz_no = document.getElementById('business_registration_number');
+  formatAndLimitBusinessNumber(biz_no);
+
+  // 휴대전화번호가 11자리이고 -추가
+  const phone = document.getElementById('representative_phone_number');
+  formatAndLimitPhoneNumber(phone);
+  // 담당자 휴대전화번호가 11자리이고 -추가
+  const manager_phone = document.getElementById('manager_phone_number');
+  formatAndLimitPhoneNumber(manager_phone);
+
+  // 일반전화번호, 팩스번호에 -추가
+  const phone2 = document.getElementById('representative_phone');
+  formatAndLimitTelephoneNumber(phone2);
+  const fax = document.getElementById('representative_fax_number');
+  formatAndLimitTelephoneNumber(fax);
 }); // DOMContentLoaded 끝
 
 // =========함수 정의========================================================================
@@ -260,4 +277,167 @@ function checkBusinessRegNumber(businessRegNumber) {
     }
   };
   xhr.send('biz_no=' + encodeURIComponent(businessRegNumber));
+}
+
+// 사업자등록번호가 10자리인지확인하고  -기호 자동 입력
+function formatAndLimitBusinessNumber(field) {
+  field.addEventListener('input', function () {
+    let number = this.value.replace(/-/g, ''); // Remove existing dashes
+
+    // Limit input to 10 characters
+    if (number.length > 10) {
+      number = number.slice(0, 10);
+    }
+
+    if (number.length > 3) {
+      if (number.length < 6) {
+        number = number.slice(0, 3) + '-' + number.slice(3);
+      } else {
+        number =
+          number.slice(0, 3) + '-' + number.slice(3, 5) + '-' + number.slice(5);
+      }
+    }
+    this.value = number;
+  });
+
+  // Check on blur event (when the field loses focus)
+  field.addEventListener('blur', function () {
+    // If not 10 digits (after removing dashes), show alert
+    if (this.value.replace(/-/g, '').length !== 10) {
+      alert('사업자등록번호는 10자리여야 합니다.');
+    }
+  });
+}
+
+// 휴대전화번호가 11자리인지확인하고  -기호 자동 입력
+function formatAndLimitPhoneNumber(field) {
+  field.addEventListener('input', function () {
+    let number = this.value.replace(/-/g, ''); // Remove existing dashes
+
+    // Limit input to 11 characters
+    if (number.length > 11) {
+      number = number.slice(0, 11);
+    }
+
+    if (number.length > 3) {
+      if (number.length < 7) {
+        number = number.slice(0, 3) + '-' + number.slice(3);
+      } else {
+        number =
+          number.slice(0, 3) + '-' + number.slice(3, 7) + '-' + number.slice(7);
+      }
+    }
+    this.value = number;
+  });
+
+  // Check on blur event (when the field loses focus)
+  field.addEventListener('blur', function () {
+    // If not 11 digits (after removing dashes), show alert
+    if (this.value.replace(/-/g, '').length !== 11) {
+      alert('휴대전화번호는 11자리여야 합니다.');
+      setTimeout(() => this.focus(), 0); // 수정: setTimeout을 사용하여 focus() 호출을 지연시킵니다.
+    }
+  });
+}
+
+// 일반전화번호 -기호 자동 입력/ 02로 시작하면 2-3-4 또는 2-4-4 구조이고,
+// 그외에 0으로시작하면 3-4-4 구조가 될거야.
+// 또한 0으로 시작하지 않으면 4-4 구조 또는 4-4-4구조가 될거야.
+function formatAndLimitTelephoneNumber(field) {
+  field.addEventListener('input', function () {
+    let number = this.value.replace(/-/g, ''); // Remove existing dashes
+
+    if (number.startsWith('02')) {
+      // Seoul area code
+      if (number.length > 10) {
+        number = number.slice(0, 10);
+      }
+
+      if (number.length > 2) {
+        if (number.length <= 5) {
+          number = number.slice(0, 2) + '-' + number.slice(2);
+        } else if (number.length <= 9) {
+          number =
+            number.slice(0, 2) +
+            '-' +
+            number.slice(2, 5) +
+            '-' +
+            number.slice(5);
+        } else {
+          number =
+            number.slice(0, 2) +
+            '-' +
+            number.slice(2, 6) +
+            '-' +
+            number.slice(6);
+        }
+      }
+    } else if (number.startsWith('0')) {
+      // Other area codes
+      if (number.length > 11) {
+        number = number.slice(0, 11);
+      }
+
+      if (number.length > 3) {
+        if (number.length <= 7) {
+          number = number.slice(0, 3) + '-' + number.slice(3);
+        } else if (number.length <= 10) {
+          number =
+            number.slice(0, 3) +
+            '-' +
+            number.slice(3, 6) +
+            '-' +
+            number.slice(6);
+        } else {
+          number =
+            number.slice(0, 3) +
+            '-' +
+            number.slice(3, 7) +
+            '-' +
+            number.slice(7);
+        }
+      }
+    } else {
+      // No area code
+      if (number.length > 12) {
+        number = number.slice(0, 12);
+      }
+
+      if (number.length > 4) {
+        if (number.length <= 8) {
+          number = number.slice(0, 4) + '-' + number.slice(4);
+        } else {
+          number =
+            number.slice(0, 4) +
+            '-' +
+            number.slice(4, 8) +
+            '-' +
+            number.slice(8);
+        }
+      }
+    }
+    this.value = number;
+  });
+
+  // Check on blur event (when the field loses focus)
+  field.addEventListener('blur', function () {
+    let digits = this.value.replace(/-/g, '').length;
+
+    if (this.value.startsWith('02')) {
+      if (digits !== 9 && digits !== 10) {
+        alert('올바른 전화번호를 입력해주세요.');
+        setTimeout(() => this.focus(), 0);
+      }
+    } else if (this.value.startsWith('0')) {
+      if (digits !== 10 && digits !== 11) {
+        alert('올바른 전화번호를 입력해주세요.');
+        setTimeout(() => this.focus(), 0);
+      }
+    } else {
+      if (digits !== 8 && digits !== 12) {
+        alert('올바른 전화번호를 입력해주세요.');
+        setTimeout(() => this.focus(), 0);
+      }
+    }
+  });
 }
