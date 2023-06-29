@@ -188,6 +188,12 @@ document.addEventListener('DOMContentLoaded', function () {
   formatAndLimitTelephoneNumber(phone2);
   const fax = document.getElementById('representative_fax_number');
   formatAndLimitTelephoneNumber(fax);
+
+  // 이메일 형식 체크
+  const email = document.getElementById('representative_email');
+  validateEmail(email);
+  const manager_email = document.getElementById('manager_email');
+  validateEmail(manager_email);
 }); // DOMContentLoaded 끝
 
 // =========함수 정의========================================================================
@@ -438,6 +444,19 @@ function formatAndLimitTelephoneNumber(field) {
         alert('올바른 전화번호를 입력해주세요.');
         setTimeout(() => this.focus(), 0);
       }
+    }
+  });
+}
+
+// 이메일 형식이 맞는지 확인
+function validateEmail(field) {
+  field.addEventListener('blur', function () {
+    let email = this.value;
+    // Check if the email is valid using a regular expression
+    let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex.test(email)) {
+      alert('유효한 이메일 주소를 입력해주세요.');
+      setTimeout(() => this.focus(), 0);
     }
   });
 }
