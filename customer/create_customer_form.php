@@ -22,12 +22,11 @@
                 <div class="col-sm-9">
                     <div class="d-flex gap-3 my-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="customer_type" id="new" value="new">
+                            <input class="form-check-input" type="radio" name="customer_type" id="new" value="신규">
                             <label class="form-check-label" for="new">신규</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="customer_type" id="transfer"
-                                value="transfer">
+                            <input class="form-check-input" type="radio" name="customer_type" id="전환" value="전환">
                             <label class="form-check-label" for="transfer">전환</label>
                         </div>
                     </div>
@@ -219,7 +218,8 @@
             </div>
             <!-- 영문인증범위, textarea type  -->
             <div class="form-group row mb-3">
-                <label for="en_certification_scope" class="col-sm-3 col-form-label">*영문인증범위:</label>
+                <label for="en_certification_scope" class="col-sm-3 col-form-label"><a
+                        href="https://translate.google.co.kr/?hl=ko" target="_blank">*영문인증범위:</a></label>
                 <div class="col-sm-9">
                     <textarea class="form-control" id="en_certification_scope" name="en_certification_scope"
                         rows="3"></textarea>
@@ -256,7 +256,7 @@
             <div class="form-group row mb-3">
                 <label for="qms_codes_content" class="col-sm-3 col-form-label">*IAF Code:</label>
                 <div class="col-sm-9 d-flex flex-wrap gap-3">
-                    <?php 
+                    <!-- <?php 
                         $code = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10","12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22","23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35","36", "37", "38", "39"];
                         $codes_content = ["01(농,수산업)", "02(광업 및 채석업)", "03(음식료 및 담배)", "04(섬유 및 섬유제품)",  "05(가죽 및 가죽제품)",  "06(목재 및 목재제품)",  "07(펄프, 종이, 종이제품)",  "08(출판업)",  "09(인쇄업)",  "10(코크스, 연탄 및 석유정제품 제조업)",  "12(화학물질, 화학제품 및 화학섬유 제조업)",  "13(의료용 물질 및 의약품 제조업)",  "14(고무제품 및 플라스틱제품 제조업)",  "15(비금속 광물제품 제조업)",  "16(콘크리트, 시멘트, 석회 및 플라스터 등 제조업)",  "17(1차 금속 및 금속가공제품 제조업 중 1차 금속 제조업)",  "18(기계 및 장비 제조업)",  "19(전기기기 및 광학기기 제조업)",  "20(조선업)",  "21(항공기 제조업)",  "22(기타 운송장비 제조업)",  "23(기타 제조업)",  "24(재생업)",  "25(전기공급업)",  "26(연료용 가스 공급업)",  "27(수도 및 증기 공급업)",  "28(건설업)",  "29(도소매업, 자동차 및 모터사이클 수리업, 개인 및 가정용품
                         수리업)",  "30(숙박업, 음식점업 및 주점업)",  "31(운송업, 창고업 및 통신업)",  "32(금융업, 보험업, 부동산업 및 임대업)",  "33(정보기술업)",  "34(전문, 과학 및 기술서비스업)",  "35(기타 서비스업)",  "36(공공 행정)",  "37(교육 서비스업)",  "38(보건업 및 사회복지 서비스업)",  "39(기타 사회 서비스업)"];
@@ -267,7 +267,187 @@
                         <label class="form-check-label"
                             for="iaf_codes_content<?php echo $i+1; ?>"><?php echo $codes_content[$i]; ?></label>
                     </div>
-                    <?php endfor; ?>
+                    <?php endfor; ?> -->
+                    <!-- <div>
+                        {{ customer.iaf_code }}
+                        <small class="text-primary">* 인증원의 계약검토를 통해 확정됩니다.</small>
+                    </div> -->
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_35" value="01" />
+                        <label class="form-check-label" for="code_35">01-Q(농,수산업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_36" value="02" />
+                        <label class="form-check-label" for="code_36">02-Q(광업 및 채석업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_1" value="03" />
+                        <label class="form-check-label" for="code_1">03-QE(음식료 및 담배)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_2" value="04" />
+                        <label class="form-check-label" for="code_2">04-Q(섬유 및 섬유제품)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_3" value="05" />
+                        <label class="form-check-label" for="code_3">05Q(가죽 및 가죽제품)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_4" value="06" />
+                        <label class="form-check-label" for="code_4">06-QE(목재 및 목재제품)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_5" value="07" />
+                        <label class="form-check-label" for="code_5">07-Q(펄프, 종이, 종이제품)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_6" value="08"
+                            disabled />
+                        <label class="form-check-label" for="code_6">08(출판업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_7" value="09"
+                            disabled />
+                        <label class="form-check-label" for="code_7">09(인쇄업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_8" value="10" />
+                        <label class="form-check-label" for="code_8">10-Q(코크스, 연탄 및 석유정제품 제조업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_9" value="12" />
+                        <label class="form-check-label" for="code_9">12-QE(화학물질, 화학제품 및 화학섬유 제조업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_10" value="13"
+                            disabled />
+                        <label class="form-check-label" for="code_10">13(의료용 물질 및 의약품 제조업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_11" value="14" />
+                        <label class="form-check-label" for="code_11">14-QE(고무제품 및 플라스틱제품 제조업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_12" value="15" />
+                        <label class="form-check-label" for="code_12">15-QE(비금속 광물제품 제조업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_13" value="16" />
+                        <label class="form-check-label" for="code_13">16-QE(콘크리트, 시멘트, 석회 및 플라스터 등 제조업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_14" value="17" />
+                        <label class="form-check-label" for="code_14">17-QEO(1차 금속 및 금속가공제품 제조업 중 1차 금속 제조업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="code_15" value="18" name="iaf_code[]" />
+                        <label class="form-check-label" for="code_15">18-QEO(기계 및 장비 제조업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_16" value="19" />
+                        <label class="form-check-label" for="code_16">19-QEO(전기기기 및 광학기기 제조업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_17" value="20"
+                            disabled />
+                        <label class="form-check-label" for="code_17">20(조선업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_18" value="21"
+                            disabled />
+                        <label class="form-check-label" for="code_18">21(항공기 제조업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_19" value="22" />
+                        <label class="form-check-label" for="code_19">22-EO(기타 운송장비 제조업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_20" value="23" />
+                        <label class="form-check-label" for="code_20">23-QE(기타 제조업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_40" value="24"
+                            disabled />
+                        <label class="form-check-label" for="code_40">24(재생업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_21" value="25"
+                            disabled />
+                        <label class="form-check-label" for="code_21">25(전기공급업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_22" value="26"
+                            disabled />
+                        <label class="form-check-label" for="code_22">26(연료용 가스 공급업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_23" value="27"
+                            disabled />
+                        <label class="form-check-label" for="code_23">27(수도 및 증기 공급업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_24" value="28" />
+                        <label class="form-check-label" for="code_24">28-QEO(건설업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_25" value="29" />
+                        <label class="form-check-label" for="code_25">29-QEO(도소매업, 자동차 및 모터사이클 수리업, 개인 및 가정용품
+                            수리업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_26" value="30" />
+                        <label class="form-check-label" for="code_26">30-QE(숙박업, 음식점업 및 주점업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_27" value="31" />
+                        <label class="form-check-label" for="code_27">31-QE(운송업, 창고업 및 통신업)</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_28" value="32" />
+                        <label class="form-check-label" for="code_28">32-QEO(금융업, 보험업, 부동산업 및 임대업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_29" value="33" />
+                        <label class="form-check-label" for="code_29">33-QEO(정보기술업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_41" value="34" />
+                        <label class="form-check-label" for="code_41">34-QEO(전문, 과학 및 기술서비스업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_30" value="35" />
+                        <label class="form-check-label" for="code_30">35-QEO(기타 서비스업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_31" value="36" />
+                        <label class="form-check-label" for="code_31">36-QEO(공공 행정)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_32" value="37" />
+                        <label class="form-check-label" for="code_32">37-QEO(교육 서비스업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_33" value="38"
+                            disabled />
+                        <label class="form-check-label" for="code_33">38(보건업 및 사회복지 서비스업)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iaf_code[]" id="code_34" value="39" />
+                        <label class="form-check-label" for="code_34">39-Q(기타 사회 서비스업)</label>
+                    </div>
                 </div>
             </div>
             <!-- 제품(서비스)명 및 공정 -->

@@ -11,131 +11,141 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // if (!isEmptyInput('business_name_ko')) {
-    //   alert('국문상호를 입력하세요');
-    //   return;
-    // }
-    // if (!isEmptyInput('business_name_en')) {
-    //   alert('영문상호를 입력하세요');
-    //   return;
-    // }
-    // if (!isEmptyInput('business_registration_number')) {
-    //   alert('사업자번호를 입력하세요');
-    //   return;
-    // }
-    // if (!isEmptyInput('representative_name')) {
-    //   alert('대표자명을 입력하세요');
-    //   return;
-    // }
+    if (!isEmptyInput('business_name_ko')) {
+      alert('국문상호를 입력하세요');
+      return;
+    }
+    if (!isEmptyInput('business_name_en')) {
+      alert('영문상호를 입력하세요');
+      return;
+    }
+    if (!isEmptyInput('business_registration_number')) {
+      alert('사업자번호를 입력하세요');
+      return;
+    }
+    if (!isEmptyInput('representative_name')) {
+      alert('대표자명을 입력하세요');
+      return;
+    }
 
-    // if (!isEmptyInput('representative_email')) {
-    //   alert('이메일을 입력하세요');
-    //   return;
-    // }
-    // if (!isEmptyInput('representative_phone_number')) {
-    //   alert('대표전화번호를 입력하세요');
-    //   return;
-    // }
+    if (!isEmptyInput('representative_email')) {
+      alert('이메일을 입력하세요');
+      return;
+    }
+    if (!isEmptyInput('representative_phone')) {
+      alert('대표전화번호를 입력하세요');
+      return;
+    }
 
-    // // postcode
-    // if (!isEmptyInput('postcode')) {
-    //   alert('우편번호를 입력하세요');
-    //   return;
-    // }
-    // // address_ko
-    // if (!isEmptyInput('address_ko')) {
-    //   alert('주소를 입력하세요');
-    //   return;
-    // }
+    // postcode
+    if (!isEmptyInput('postcode')) {
+      alert('우편번호를 입력하세요');
+      return;
+    }
+    // address_ko
+    if (!isEmptyInput('address_ko')) {
+      alert('주소를 입력하세요');
+      return;
+    }
 
-    // // address_en
-    // if (!isEmptyInput('address_en')) {
-    //   alert('주소를 입력하세요');
-    //   return;
-    // }
+    // address_en
+    if (!isEmptyInput('address_en')) {
+      alert('주소를 입력하세요');
+      return;
+    }
 
-    // // manager_name
-    // if (!isEmptyInput('manager_name')) {
-    //   alert('담당자명을 입력하세요');
-    //   return;
-    // }
+    // manager_name
+    if (!isEmptyInput('manager_name')) {
+      alert('담당자명을 입력하세요');
+      return;
+    }
 
-    // // manager_phone_number
-    // if (!isEmptyInput('manager_phone_number')) {
-    //   alert('담당자 휴대번호를 입력하세요');
-    //   return;
-    // }
+    // manager_phone_number
+    if (!isEmptyInput('manager_phone_number')) {
+      alert('담당자 휴대번호를 입력하세요');
+      return;
+    }
 
-    // // manager_email
-    // if (!isEmptyInput('manager_email')) {
-    //   alert('담당자 이메일을 입력하세요');
-    //   return;
-    // }
+    // manager_email
+    if (!isEmptyInput('manager_email')) {
+      alert('담당자 이메일을 입력하세요');
+      return;
+    }
 
-    // // scope_of_organization
-    // if (!isEmptyInput('scope_of_organization')) {
-    //   alert('조직의 범위를 입력하세요');
-    //   return;
-    // }
-    // number_of_employees
-    // if (!isEmptyInput('number_of_employees')) {
-    //   alert('직원수를 입력하세요');
-    //   return;
-    // }
+    // scope_of_organization
+    if (!isEmptyInput('scope_of_organization')) {
+      alert('조직의 범위를 입력하세요');
+      return;
+    }
+    number_of_employees;
+    if (!isEmptyInput('number_of_employees')) {
+      alert('직원수를 입력하세요');
+      return;
+    }
 
-    // // design_dev radio button
-    // if (!isEmptyRadio('design_dev')) {
-    //   alert('설계/개발여부를 선택하세요');
-    //   return;
-    // }
+    // design_dev radio button
+    if (!isEmptyRadio('design_dev')) {
+      alert('설계/개발여부를 선택하세요');
+      return;
+    }
 
-    // // korean_certification_scope
-    // if (!isEmptyInput('korean_certification_scope')) {
-    //   alert('인증범위를 입력하세요');
-    //   return;
-    // }
+    // korean_certification_scope
+    if (!isEmptyInput('korean_certification_scope')) {
+      alert('인증범위를 입력하세요');
+      return;
+    }
 
-    // // activity_scope[] checkbox
-    // if (!isEmptyCheckbox('activity_scope[]')) {
-    //   alert('활동범위를 선택하세요');
-    //   return;
-    // }
+    // activity_scope[] checkbox
+    if (!isEmptyCheckbox('activity_scope[]')) {
+      alert('활동범위를 선택하세요');
+      return;
+    }
 
-    // // iaf_code[] checkbox
-    // if (!isEmptyCheckbox('iaf_code[]')) {
-    //   alert('IAF CODE를 선택하세요');
-    //   return;
-    // }
+    // iaf_code[] checkbox
+    if (!isEmptyCheckbox('iaf_code[]')) {
+      alert('IAF CODE를 선택하세요');
+      return;
+    }
 
-    // // product_service_name
-    // if (!isEmptyInput('product_service_name')) {
-    //   alert('제품/서비스명 및 공정을 입력하세요');
-    //   return;
-    // }
+    // product_service_name
+    if (!isEmptyInput('product_service_name')) {
+      alert('제품/서비스명 및 공정을 입력하세요');
+      return;
+    }
 
-    // // exclusion radio button
-    // if (!isEmptyRadio('exclusion')) {
-    //   alert('적용제외조항 유무를 선택하세요');
-    //   return;
-    // }
+    // exclusion radio button
+    if (!isEmptyRadio('exclusion')) {
+      alert('적용제외조항 유무를 선택하세요');
+      return;
+    }
 
-    // // outsourcing radio button
-    // if (!isEmptyRadio('outsourcing')) {
-    //   alert('외주프로세스 유무를 선택하세요');
-    //   return;
-    // }
+    // outsourcing radio button
+    if (!isEmptyRadio('outsourcing')) {
+      alert('외주프로세스 유무를 선택하세요');
+      return;
+    }
 
-    // // construction_permit radio button
-    // if (!isEmptyRadio('construction_permit')) {
-    //   alert('건설면허 유무를 선택하세요');
-    //   return;
-    // }
+    // construction_permit radio button
+    if (!isEmptyRadio('construction_permit')) {
+      alert('건설면허 유무를 선택하세요');
+      return;
+    }
 
-    // // business_cert_image
-    // if (!isEmptyInput('business_cert_image')) {
-    //   alert('사업자등록증을 첨부하세요');
-    //   return;
-    // }
+    // business_cert_image
+    if (!isEmptyInput('business_cert_image')) {
+      alert('사업자등록증을 첨부하세요');
+      return;
+    }
+
+    // submit
+    const business_no_checked = document.getElementById('is_duplicated');
+    if (business_no_checked.value === 'no') {
+      alert('사업자등록번호 중복확인을 해주세요.');
+      e.preventDefault();
+      return;
+    } else {
+      document.getElementById('create_customer_form').submit();
+    }
   }); // submit 버튼 클릭 시 끝
 
   // 라디오 버튼 클릭 시 입력창 보이기/숨기기
@@ -341,7 +351,7 @@ function formatAndLimitPhoneNumber(field) {
     // If not 11 digits (after removing dashes), show alert
     if (this.value.replace(/-/g, '').length !== 11) {
       alert('휴대전화번호는 11자리여야 합니다.');
-      setTimeout(() => this.focus(), 0); // 수정: setTimeout을 사용하여 focus() 호출을 지연시킵니다.
+      // setTimeout(() => this.focus(), 0); // 수정: setTimeout을 사용하여 focus() 호출을 지연시킵니다.
     }
   });
 }
@@ -432,17 +442,17 @@ function formatAndLimitTelephoneNumber(field) {
     if (this.value.startsWith('02')) {
       if (digits !== 9 && digits !== 10) {
         alert('올바른 전화번호를 입력해주세요.');
-        setTimeout(() => this.focus(), 0);
+        // setTimeout(() => this.focus(), 0);
       }
     } else if (this.value.startsWith('0')) {
       if (digits !== 10 && digits !== 11) {
         alert('올바른 전화번호를 입력해주세요.');
-        setTimeout(() => this.focus(), 0);
+        // setTimeout(() => this.focus(), 0);
       }
     } else {
       if (digits !== 8 && digits !== 12) {
         alert('올바른 전화번호를 입력해주세요.');
-        setTimeout(() => this.focus(), 0);
+        // setTimeout(() => this.focus(), 0);
       }
     }
   });
@@ -456,7 +466,61 @@ function validateEmail(field) {
     let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!regex.test(email)) {
       alert('유효한 이메일 주소를 입력해주세요.');
-      setTimeout(() => this.focus(), 0);
+      // setTimeout(() => this.focus(), 0);
     }
   });
 }
+
+// 우편번호 찾기
+// 우편번호 검색기능. 다음 API 사용
+let btn_postcode = document.querySelector('#btn_postcode');
+btn_postcode.addEventListener('click', function () {
+  new daum.Postcode({
+    oncomplete: function (data) {
+      // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+      // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+      console.log(data);
+      let addr = ''; // 주소 변수
+      let extra_addr = ''; // 참고항목 변수
+
+      if (data.userSelectedType === 'R') {
+        addr = data.roadAddress;
+        console.log(addr);
+      } else if (data.userSelectedType === 'J') {
+        addr = data.jibunAddress;
+        console.log(addr);
+      }
+
+      if (data.bname != '') {
+        extra_addr = data.bname;
+      }
+
+      if (data.buildingName != '') {
+        if (extra_addr === '') {
+          extra_addr = data.buildingName;
+        } else {
+          extra_addr += ', ' + data.buildingName;
+        }
+      }
+
+      if (extra_addr !== '') {
+        extra_addr = ' (' + extra_addr + ')';
+      }
+
+      const address_ko = document.querySelector('#address_ko');
+      address_ko.value = addr + extra_addr;
+
+      const postcode = document.querySelector('#postcode');
+      postcode.value = data.zonecode;
+
+      const address_detail_ko = document.querySelector('#address_detail_ko');
+      address_detail_ko.focus();
+
+      // 영문주소 입력
+      const address_en = document.querySelector('#address_en');
+      address_en.value = data.roadAddressEnglish;
+
+      const address_detail_en = document.querySelector('#address_detail_en');
+    },
+  }).open();
+});
