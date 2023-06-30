@@ -26,7 +26,7 @@
                             <label class="form-check-label" for="new">신규</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="customer_type" id="전환" value="전환">
+                            <input class="form-check-input" type="radio" name="customer_type" id="transfer" value="전환">
                             <label class="form-check-label" for="transfer">전환</label>
                         </div>
                     </div>
@@ -38,7 +38,9 @@
                 <label for="business_name_ko" class="col-sm-3 col-form-label">*국문상호:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="business_name_ko" name="business_name_ko" required>
+                    <small class="form-text text-muted">😀 수정이 불가능합니다. 사업자등록증상 상호를 정확히 입력해주세요.</small>
                 </div>
+
             </div>
 
             <!-- 영문상호 -->
@@ -48,6 +50,7 @@
                     <input type="text" class="form-control" id="business_name_en" name="business_name_en"
                         placeholder="대소문자 구분, Co., Ltd. , Inc. 등 확인필요" required>
                 </div>
+
             </div>
 
             <!-- 사업자등록번호 -->
@@ -86,6 +89,14 @@
                 <div class="col-sm-9">
                     <input type="email" class="form-control" id="representative_email" name="representative_email"
                         required>
+                </div>
+            </div>
+            <!--세금계산서 발행 이메일 -->
+            <div class="form-group row mb-3">
+                <label for="representative_email" class="col-sm-3 col-form-label">*세금계산서 이메일:</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" id="email_tax" name="email_tax"
+                        placeholder="세금계산서 발행용 이메일 주소입력" required>
                 </div>
             </div>
             <!--회사대표 전화번호 -->

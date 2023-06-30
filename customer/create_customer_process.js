@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('이메일을 입력하세요');
       return;
     }
+
+    if (!isEmptyInput('email_tax')) {
+      alert('세금계산서 이메일을 입력하세요');
+      return;
+    }
+
     if (!isEmptyInput('representative_phone')) {
       alert('대표전화번호를 입력하세요');
       return;
@@ -204,6 +210,8 @@ document.addEventListener('DOMContentLoaded', function () {
   validateEmail(email);
   const manager_email = document.getElementById('manager_email');
   validateEmail(manager_email);
+  const email_tax = document.getElementById('email_tax');
+  validateEmail(email_tax);
 }); // DOMContentLoaded 끝
 
 // =========함수 정의========================================================================

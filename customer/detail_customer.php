@@ -2,6 +2,8 @@
 session_start();
 
 
+
+
 include '../db/dbconfig.php';
 
 // Get id from URL
@@ -46,7 +48,7 @@ $customer = $stmt->fetch();
                             <label class="form-check-label" for="new">신규</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="customer_type" id="전환" value="전환"
+                            <input class="form-check-input" type="radio" name="customer_type" id="transfer" value="전환"
                                 <?php echo ($customer['customer_type']=='전환')?'checked':'' ?> disabled>
 
                             <label class="form-check-label" for="transfer">전환</label>
@@ -115,6 +117,16 @@ $customer = $stmt->fetch();
                         required value="<?= $customer['email'] ?>" disabled>
                 </div>
             </div>
+
+            <!-- 세금계산서용 이메일 -->
+            <div class="form-group row mb-3">
+                <label for="representative_email" class="col-sm-3 col-form-label">*대표 이메일:</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" id="email_tax" name="email_tax" required
+                        value="<?= $customer['email_tax'] ?>" disabled>
+                </div>
+            </div>
+
             <!--회사대표 전화번호 -->
             <div class="form-group row mb-3">
                 <label for="representative_phone" class="col-sm-3 col-form-label">*대표전화번호:</label>
@@ -253,7 +265,7 @@ $customer = $stmt->fetch();
                 <label for="korean_certification_scope" class="col-sm-3 col-form-label">*국문인증범위:</label>
                 <div class="col-sm-9">
                     <textarea class="form-control" id="korean_certification_scope" name="korean_certification_scope"
-                        value="<?= $customer['scope_ko'] ?>" disabled rows="3"></textarea>
+                        disabled rows="3"><?php echo $customer['scope_ko'] ?></textarea>
                 </div>
             </div>
             <!-- 영문인증범위, textarea type  -->
@@ -261,8 +273,8 @@ $customer = $stmt->fetch();
                 <label for="en_certification_scope" class="col-sm-3 col-form-label"><a
                         href="https://translate.google.co.kr/?hl=ko" target="_blank">*영문인증범위:</a></label>
                 <div class="col-sm-9">
-                    <textarea class="form-control" id="en_certification_scope" name="en_certification_scope"
-                        value="<?= $customer['scope_en'] ?>" disabled rows="3"></textarea>
+                    <textarea class="form-control" id="en_certification_scope" name="en_certification_scope" disabled
+                        rows="3"><?php echo $customer['scope_en'] ?></textarea>
                 </div>
             </div>
             <!-- 인증범위 활동, checkbox type  -->
@@ -556,7 +568,7 @@ $customer = $stmt->fetch();
                 <label for="product_service_name" class="col-sm-3 col-form-label">*제품(서비스)명 및 공정:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="product_service_name" name="product_service_name"
-                        placeholder="제품(서비스)명 및 공정" value="<?= $customer['name_ko'] ?>" disabled>
+                        placeholder="" value="<?= $customer['process'] ?>" disabled>
                 </div>
             </div>
             <!-- 적용제외조항 유무 -->
@@ -565,12 +577,12 @@ $customer = $stmt->fetch();
                 <div class="col-sm-9 d-flex gap-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="exclusion_status_yes" name="exclusion"
-                            <?php echo ($customer['customer_type']=='있음')?'checked':'' ?> disabled value="있음">
+                            <?php echo ($customer['exclusion']=='있음')?'checked':'' ?> disabled value="있음">
                         <label class="form-check-label" for="exclusion_status_yes">있음</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="exclusion_status_no" name="exclusion"
-                            <?php echo ($customer['customer_type']=='없음')?'checked':'' ?> disabled value="없음">
+                            <?php echo ($customer['exclusion']=='없음')?'checked':'' ?> disabled value="없음">
                         <label class="form-check-label" for="exclusion_status_no">없음</label>
                     </div>
                 </div>
@@ -579,8 +591,8 @@ $customer = $stmt->fetch();
             <div class="form-group row mb-3" id="exclusion_group">
                 <label for="exclusion_basis" class="col-sm-3 col-form-label">적용제외조항/근거:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="exclusion_basis" name="exclusion_basis"
-                        placeholder="적용제외조항/근거" value="<?= $customer['name_ko'] ?>" disabled>
+                    <input type="text" class="form-control" id="exclusion_basis" name="exclusion_basis" placeholder=""
+                        value="<?= $customer['exclusion_content'] ?>" disabled>
                 </div>
             </div>
             <!-- 외주처리 유무 -->
@@ -589,12 +601,12 @@ $customer = $stmt->fetch();
                 <div class="col-sm-9 d-flex gap-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="outsourcing_status_yes" name="outsourcing"
-                            <?php echo ($customer['customer_type']=='있음')?'checked':'' ?> disabled value="있음">
+                            <?php echo ($customer['outsourcing']=='있음')?'checked':'' ?> disabled value="있음">
                         <label class="form-check-label" for="outsourcing_status_yes">있음</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="outsourcing_status_no" name="outsourcing"
-                            <?php echo ($customer['customer_type']=='없음')?'checked':'' ?> disabled value="없음">
+                            <?php echo ($customer['outsourcing']=='없음')?'checked':'' ?> disabled value="없음">
                         <label class="form-check-label" for="outsourcing_status_no">없음</label>
                     </div>
                 </div>
@@ -604,7 +616,7 @@ $customer = $stmt->fetch();
                 <label for="outsourcing_process" class="col-sm-3 col-form-label">*외주처리 프로세스:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="outsourcing_process" name="outsourcing_process"
-                        value="<?= $customer['name_ko'] ?>" disabled>
+                        value="<?= $customer['outsourcing_content'] ?>" disabled>
                 </div>
             </div>
 
@@ -614,13 +626,13 @@ $customer = $stmt->fetch();
                 <div class="col-sm-9 d-flex gap-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="construction_license_status_yes"
-                            <?php echo ($customer['customer_type']=='있음')?'checked':'' ?> disabled
+                            <?php echo ($customer['construction']=='있음')?'checked':'' ?> disabled
                             name="construction_permit" value="있음">
                         <label class="form-check-label" for="construction_license_status_yes">있음</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="construction_license_status_no"
-                            <?php echo ($customer['customer_type']=='없음')?'checked':'' ?> disabled
+                            <?php echo ($customer['construction']=='없음')?'checked':'' ?> disabled
                             name="construction_permit" value="없음">
                         <label class="form-check-label" for="construction_license_status_no">없음</label>
                     </div>
@@ -631,7 +643,7 @@ $customer = $stmt->fetch();
                 <label for="construction_license_content" class="col-sm-3 col-form-label">건설면허 내용:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="construction_license_content"
-                        name="construction_license_content" value="<?= $customer['name_ko'] ?>" disabled>
+                        name="construction_license_content" value="<?= $customer['construction_content'] ?>" disabled>
                 </div>
             </div>
 
@@ -663,14 +675,16 @@ $customer = $stmt->fetch();
                 <div class="col-sm-3"></div>
                 <div class="col-sm-9 d-flex align-items-center justify-content-end gap-2">
                     <button type="button" class="btn btn-secondary"
-                        onclick="location.href='list_customer.php'">목록</button>
-                    <button type="button" class="btn btn-primary ml-3" id="btn_submit">저장</button>
+                        onclick="location.href='http://localhost:8888/kaicms_php/customer/list_customer.php'">목록</button>
+                    <button type="button" class="btn btn-primary ml-3" id=""
+                        onclick="window.location.href='http://localhost:8888/kaicms_php/customer/update_customer_form.php?id=<?= $customer['customer_id'] ?>'">수정</button>
+
                 </div>
             </div>
 
         </form>
     </div>
-    <script src="create_customer_process.js"></script>
+    <!-- <script src="http://localhost:8888/kaicms_php/customer/create_customer_process.js"></script> -->
 
 
 </body>
